@@ -4,8 +4,10 @@ export interface Product {
   id: number;
   name: string;
   description: string;
-  price: number;
-  image: string;
+  price: string;
+  images: string;
+  variants: string | null;
+  brand: number;
 }
 
 export interface Testimonial {

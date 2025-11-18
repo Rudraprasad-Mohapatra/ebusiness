@@ -6,3 +6,4 @@ psycopg2-binary>=2.9   # optional, for Postgres later
 mysqlclient
 python-dotenv
 Pillow>=9.0.0  # Required for ImageField support
+django-cors-headers

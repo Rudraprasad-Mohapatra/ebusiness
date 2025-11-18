@@ -13,6 +13,8 @@ DEBUG = os.getenv("DJANGO_DEBUG", "True") == "True"
 
 ALLOWED_HOSTS = [host.strip() for host in os.getenv("DJANGO_ALLOWED_HOSTS", "localhost").split(",")]
 
+CORS_ALLOWED_ORIGINS = [origin.strip() for origin in os.getenv("CORS_ALLOWED_ORIGINS", "http://localhost:5173").split(",")]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -28,9 +30,11 @@ INSTALLED_APPS = [
     'apps.orders',
     'apps.users',
     'frontend',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",   # let whitenoise serve static files
     "django.contrib.sessions.middleware.SessionMiddleware",

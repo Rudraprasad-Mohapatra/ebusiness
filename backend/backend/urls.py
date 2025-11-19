@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from django.views.generic import TemplateView
 from django.http import FileResponse
+from django.views.static import serve
 from pathlib import Path
 import os
 import mimetypes
@@ -39,11 +40,12 @@ urlpatterns = [
     path("api/products/", include("apps.products.urls")),   # products API
     path("api/contact/", include("apps.contact.urls")),  # contact endpoint
     re_path(r'^assets/(?P<path>.*)$', serve_assets, name='serve-assets'),
+    re_path(r'^media/(?P<path>.*)$', lambda r, path: serve(r, path, document_root=settings.MEDIA_ROOT)),  # media files BEFORE catch-all
 ]
 
 # Serve static files in development
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-# catch-all: send everything else to React index.html (must be LAST)
+# catch-all: send everything else to React index.html (MUST be LAST)
 urlpatterns.append(re_path(r"^.*$", TemplateView.as_view(template_name="index.html"), name="index"))

@@ -8,8 +8,8 @@ class BrandAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price', 'brand')
-    list_filter = ('brand',)
+    list_display = ('name', 'price', 'brand', 'is_trending')
+    list_filter = ('brand', 'is_trending')
     search_fields = ('name', 'description')
 
 @admin.register(Testimonial)

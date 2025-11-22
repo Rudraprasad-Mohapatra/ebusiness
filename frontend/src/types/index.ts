@@ -1,13 +1,33 @@
 // Define TypeScript interfaces and types for the project
 
+export interface Brand {
+  id: number;
+  name: string;
+  slug: string;
+  logo: string;
+  primary_color: string;
+  secondary_color: string;
+  font_family: string;
+  header_text: string;
+  footer_text: string;
+  contact_email: string;
+  contact_phone: string;
+}
+
 export interface Product {
   id: number;
   name: string;
-  description: string;
+  description?: string;
+  short_description?: string;
+  model_name?: string;
+  details?: string;
   price: string;
   images: string;
-  variants: string | null;
-  brand: number;
+  variants: Record<string, unknown> | null;
+  brand: Brand | number;
+  is_trending?: boolean;
+  created_at?: string;
+  updated_at?: string;
 }
 
 export interface Testimonial {

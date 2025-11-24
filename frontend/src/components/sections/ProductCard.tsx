@@ -57,10 +57,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           {product.short_description || product.description || 'Premium handcrafted product'}
         </p>
 
-        <div className="flex items-center justify-between">
-          <p className="text-lg sm:text-xl md:text-2xl font-bold" style={{ color: accentColor }}>
-            ${parseFloat(product.price).toFixed(2)}
-          </p>
+        <div className="flex items-center justify-end">
           <button
             className="text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded text-xs sm:text-sm transition-all hover:opacity-90"
             style={{ backgroundColor: accentColor }}

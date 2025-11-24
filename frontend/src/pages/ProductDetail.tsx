@@ -41,10 +41,6 @@ const ProductDetail: React.FC = () => {
   };
 
   const accentColor = brand?.primary_color || '#1a4d2e';
-  const accentStyle = {
-    color: accentColor,
-    borderColor: accentColor,
-  };
 
   if (loading) {
     return (
@@ -150,23 +146,23 @@ const ProductDetail: React.FC = () => {
                 </p>
               )}
 
-              {/* Rating */}
-              <div className="flex items-center space-x-2 mb-6">
+              {/* Rating - COMMENTED OUT */}
+              {/* <div className="flex items-center space-x-2 mb-6">
                 <div className="flex text-yellow-400">
                   {[...Array(5)].map((_, i) => (
                     <span key={i}>⭐</span>
                   ))}
                 </div>
                 <span className="text-gray-600 text-sm sm:text-base">(48 reviews)</span>
-              </div>
+              </div> */}
 
-              {/* Price */}
-              <div className="p-4 rounded-lg mb-6" style={{ backgroundColor: '#f5f1e8' }}>
+              {/* Price - COMMENTED OUT */}
+              {/* <div className="p-4 rounded-lg mb-6" style={{ backgroundColor: '#f5f1e8' }}>
                 <p className="text-gray-600 text-sm mb-2">Price</p>
                 <p className="text-3xl sm:text-4xl md:text-5xl font-bold" style={{ color: accentColor }}>
                   ${parseFloat(product.price).toFixed(2)}
                 </p>
-              </div>
+              </div> */}
 
               {/* Description */}
               <div className="mb-6">

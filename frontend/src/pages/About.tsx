@@ -5,14 +5,11 @@ import { fetchBrand } from '../utils/api';
 
 const About: React.FC = () => {
   const [brand, setBrand] = useState<Brand | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const loadBrand = async () => {
-      setIsLoading(true);
       const brandData = await fetchBrand();
       setBrand(brandData);
-      setIsLoading(false);
     };
     loadBrand();
   }, []);
@@ -234,7 +231,7 @@ const About: React.FC = () => {
               Get in Touch
             </a>
           </motion.div>
-        </section>
+        </div>
       </section>
 
       {/* Brand Info Section */}
@@ -283,7 +280,5 @@ const About: React.FC = () => {
     </div>
   );
 };
-
-export default About;
 
 export default About;

@@ -116,8 +116,8 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({ products, autoSwipeIn
               {current.short_description || current.description || 'Premium handcrafted product'}
             </motion.p>
 
-            {/* Price */}
-            <motion.div
+            {/* Price - COMMENTED OUT */}
+            {/* <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4, duration: 0.5 }}
@@ -127,7 +127,7 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({ products, autoSwipeIn
               <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold drop-shadow-2xl">
                 ${parseFloat(current.price).toFixed(2)}
               </p>
-            </motion.div>
+            </motion.div> */}
           </div>
         </motion.div>
       </AnimatePresence>

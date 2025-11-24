@@ -10,6 +10,8 @@ export interface Brand {
   font_family: string;
   header_text: string;
   footer_text: string;
+  about_text?: string;
+  background_image?: string;
   contact_email: string;
   contact_phone: string;
 }

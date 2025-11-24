@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import type { Product } from '../../types';
+import { fetchBrand } from '../../utils/api';
+import type { Product, Brand } from '../../types';
 
 interface ProductCardProps {
   product: Product;
@@ -9,6 +10,17 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const navigate = useNavigate();
+  const [brand, setBrand] = useState<Brand | null>(null);
+
+  useEffect(() => {
+    const loadBrand = async () => {
+      const brandData = await fetchBrand();
+      setBrand(brandData);
+    };
+    loadBrand();
+  }, []);
+
+  const accentColor = brand?.primary_color || '#1a4d2e';
 
   const handleClick = () => {
     navigate(`/products/${product.id}`);
@@ -46,11 +58,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </p>
 
         <div className="flex items-center justify-between">
-          <p className="text-lg sm:text-xl md:text-2xl font-bold text-blue-600">
+          <p className="text-lg sm:text-xl md:text-2xl font-bold" style={{ color: accentColor }}>
             ${parseFloat(product.price).toFixed(2)}
           </p>
           <button
-            className="bg-blue-500 hover:bg-blue-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded text-xs sm:text-sm transition-colors"
+            className="text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded text-xs sm:text-sm transition-all hover:opacity-90"
+            style={{ backgroundColor: accentColor }}
             onClick={(e) => {
               e.stopPropagation();
               handleClick();

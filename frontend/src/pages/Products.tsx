@@ -1,32 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import ProductGrid from '../components/sections/ProductGrid';
-import { fetchProducts } from '../utils/api';
-import type { Product } from '../types';
+import { fetchProducts, fetchBrand } from '../utils/api';
+import type { Product, Brand } from '../types';
 
 const Products: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [brand, setBrand] = useState<Brand | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const loadProducts = async () => {
+    const loadData = async () => {
       try {
-        const data = await fetchProducts();
-        setProducts(data);
+        const [productsData, brandData] = await Promise.all([
+          fetchProducts(),
+          fetchBrand(),
+        ]);
+        setProducts(productsData);
+        setBrand(brandData);
       } catch (error) {
-        console.error('Failed to fetch products:', error);
+        console.error('Failed to fetch data:', error);
       } finally {
         setLoading(false);
       }
     };
 
-    loadProducts();
+    loadData();
   }, []);
+
+  const headerStyle = brand ? {
+    backgroundColor: brand.primary_color || '#1a4d2e',
+  } : {};
 
   return (
     <div className="w-full">
       {/* Page Header */}
-      <section className="w-full bg-linear-to-r from-blue-600 to-blue-800 px-4 py-8 sm:py-12 md:py-16">
+      <section className="w-full px-4 py-8 sm:py-12 md:py-16 text-white" style={headerStyle}>
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -34,10 +43,10 @@ const Products: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">
               Our Products
             </h1>
-            <p className="text-sm sm:text-base md:text-lg text-blue-100 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base md:text-lg opacity-90 max-w-2xl mx-auto">
               Explore our complete collection of handcrafted products designed with care and passion
             </p>
           </motion.div>
@@ -46,14 +55,14 @@ const Products: React.FC = () => {
 
       {/* Products Section */}
       {loading ? (
-        <section className="w-full bg-gray-50 px-4 py-16 sm:py-20 md:py-24">
+        <section className="w-full px-4 py-16 sm:py-20 md:py-24" style={{ backgroundColor: '#f5f1e8' }}>
           <div className="max-w-7xl mx-auto text-center">
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-              className="inline-block w-12 h-12 border-4 border-blue-200 border-t-blue-600 rounded-full"
+              className="inline-block w-12 h-12 border-4 border-gray-300 border-t-green-700 rounded-full"
             ></motion.div>
-            <p className="mt-4 text-gray-600 text-base sm:text-lg">Loading products...</p>
+            <p className="mt-4 text-gray-700 text-base sm:text-lg">Loading products...</p>
           </div>
         </section>
       ) : (

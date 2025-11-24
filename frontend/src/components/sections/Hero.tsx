@@ -1,27 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import ProductCarousel from './ProductCarousel';
-import { fetchTrendingProducts } from '../../utils/api';
-import type { Product } from '../../types';
+import { fetchTrendingProducts, fetchBrand } from '../../utils/api';
+import type { Product, Brand } from '../../types';
 
 const Hero: React.FC = () => {
   const [trendingProducts, setTrendingProducts] = useState<Product[]>([]);
+  const [brand, setBrand] = useState<Brand | null>(null);
 
   useEffect(() => {
-    const loadTrendingProducts = async () => {
+    const loadData = async () => {
       try {
-        const data = await fetchTrendingProducts();
-        setTrendingProducts(data);
+        const [trending, brandData] = await Promise.all([
+          fetchTrendingProducts(),
+          fetchBrand(),
+        ]);
+        setTrendingProducts(trending);
+        setBrand(brandData);
       } catch (error) {
-        console.error('Failed to fetch trending products:', error);
+        console.error('Failed to fetch data:', error);
       }
     };
 
-    loadTrendingProducts();
+    loadData();
   }, []);
 
+  const accentColor = brand?.primary_color || '#1a4d2e';
+
   return (
-    <div className="w-full bg-gray-50">
+    <div className="w-full" style={{ backgroundColor: '#f5f1e8' }}>
       {/* Welcome Section */}
       <section className="w-full px-4 py-8 sm:py-12 md:py-16 lg:py-20">
         <div className="max-w-6xl mx-auto">
@@ -32,15 +39,15 @@ const Hero: React.FC = () => {
             className="text-center"
           >
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-3 sm:mb-4 md:mb-6">
-              Welcome to Radharaman Crafts
+              Welcome to {brand?.name || 'Radharaman Crafts'}
             </h1>
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto px-2"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 max-w-3xl mx-auto px-2"
             >
-              Discover the finest handcrafted products made with love and passion
+              {brand?.header_text || 'Discover the finest handcrafted products made with love and passion'}
             </motion.p>
           </motion.div>
         </div>
@@ -55,6 +62,7 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6 sm:mb-8 md:mb-10"
+              style={{ color: accentColor }}
             >
               Trending Products
             </motion.h2>
@@ -76,7 +84,7 @@ const Hero: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.6 }}
-              className="text-center text-gray-600 text-sm sm:text-base md:text-lg mt-6 sm:mt-8"
+              className="text-center text-gray-700 text-sm sm:text-base md:text-lg mt-6 sm:mt-8"
             >
               Explore our most popular and trending handcrafted items
             </motion.p>

@@ -25,12 +25,15 @@ const About: React.FC = () => {
   } : {};
 
   const headerStyle = brand ? {
-    backgroundColor: brand.primary_color,
+    backgroundColor: brand.primary_color || '#1a4d2e',
   } : {};
 
+  const footerBgColor = '#f5f1e8';
+  const footerTextColor = '#1a4d2e';
+
   const accentStyle = brand ? {
-    color: brand.primary_color,
-    borderColor: brand.primary_color,
+    color: brand.primary_color || '#1a4d2e',
+    borderColor: brand.primary_color || '#1a4d2e',
   } : {};
 
   return (
@@ -63,7 +66,7 @@ const About: React.FC = () => {
           className="w-full h-64 sm:h-80 md:h-96 lg:h-[500px] relative overflow-hidden"
           style={backgroundStyle}
         >
-          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+          <div className="absolute inset-0 bg-opacity-40 flex items-center justify-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -231,13 +234,13 @@ const About: React.FC = () => {
               Get in Touch
             </a>
           </motion.div>
-        </div>
+        </section>
       </section>
 
       {/* Brand Info Section */}
       <section 
-        className="w-full px-4 py-8 sm:py-12 md:py-16 text-white"
-        style={{ backgroundColor: brand?.secondary_color || '#1f2937' }}
+        className="w-full px-4 py-12 sm:py-16 md:py-20 border-t-4"
+        style={{ backgroundColor: footerBgColor, borderColor: '#1a4d2e' }}
       >
         <div className="max-w-4xl mx-auto">
           <motion.div
@@ -248,26 +251,26 @@ const About: React.FC = () => {
           >
             {/* About Brand */}
             <div>
-              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">About {brand?.name}</h3>
-              <p className="text-xs sm:text-sm opacity-90 leading-relaxed">
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4" style={{ color: footerTextColor }}>About {brand?.name}</h3>
+              <p className="text-sm sm:text-base leading-relaxed" style={{ color: footerTextColor, opacity: 0.85 }}>
                 {brand?.footer_text || 'Crafting quality products with tradition. We believe in creating products that last, that matter, and that make a difference in people\'s lives.'}
               </p>
             </div>
 
             {/* Contact Info */}
             <div>
-              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Get in Touch</h3>
-              <div className="text-xs sm:text-sm space-y-2">
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4" style={{ color: footerTextColor }}>Get in Touch</h3>
+              <div className="text-sm sm:text-base space-y-2">
                 {brand?.contact_email && (
                   <p>
-                    📧 <a href={`mailto:${brand.contact_email}`} className="hover:opacity-80 transition-opacity">
+                    📧 <a href={`mailto:${brand.contact_email}`} className="hover:opacity-70 transition-opacity" style={{ color: footerTextColor }}>
                       {brand.contact_email}
                     </a>
                   </p>
                 )}
                 {brand?.contact_phone && (
                   <p>
-                    📞 <a href={`tel:${brand.contact_phone}`} className="hover:opacity-80 transition-opacity">
+                    📞 <a href={`tel:${brand.contact_phone}`} className="hover:opacity-70 transition-opacity" style={{ color: footerTextColor }}>
                       {brand.contact_phone}
                     </a>
                   </p>
@@ -280,5 +283,7 @@ const About: React.FC = () => {
     </div>
   );
 };
+
+export default About;
 
 export default About;

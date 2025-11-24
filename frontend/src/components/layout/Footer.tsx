@@ -14,19 +14,22 @@ const Footer: React.FC = () => {
     loadBrand();
   }, []);
 
-  const footerStyle = brand ? {
-    backgroundColor: brand.secondary_color,
-    fontFamily: brand.font_family || 'inherit',
-  } : {};
+  // Use warm cream background with dark text for better contrast
+  const footerBgColor = '#f5f1e8';
+  const footerTextColor = '#1a4d2e';
 
   return (
     <footer 
-      className="text-white transition-colors duration-300"
-      style={footerStyle}
+      className="transition-colors duration-300 border-t-4"
+      style={{
+        backgroundColor: footerBgColor,
+        borderColor: '#1a4d2e',
+        fontFamily: brand?.font_family || 'inherit',
+      }}
     >
       {/* Main Footer Content */}
-      <div className="container mx-auto px-3 sm:px-4 py-8 sm:py-12 max-w-7xl">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20 max-w-7xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
           {/* Brand Info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -34,8 +37,8 @@ const Footer: React.FC = () => {
             transition={{ delay: 0.1 }}
             className="text-center sm:text-left"
           >
-            <h3 className="text-lg sm:text-xl font-bold mb-2">{brand?.name || 'Radharaman Crafts'}</h3>
-            <p className="text-xs sm:text-sm opacity-90">{brand?.footer_text || 'Crafting quality products with tradition.'}</p>
+            <h3 className="text-lg sm:text-xl font-bold mb-2" style={{ color: footerTextColor }}>{brand?.name || 'Radharaman Crafts'}</h3>
+            <p className="text-sm sm:text-base" style={{ color: footerTextColor, opacity: 0.8 }}>{brand?.footer_text || 'Crafting quality products with tradition.'}</p>
           </motion.div>
 
           {/* Contact Info */}
@@ -45,18 +48,18 @@ const Footer: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="text-center sm:text-left"
           >
-            <h4 className="text-base sm:text-lg font-bold mb-3">Contact</h4>
-            <div className="text-xs sm:text-sm space-y-2">
+            <h4 className="text-base sm:text-lg font-bold mb-3" style={{ color: footerTextColor }}>Contact</h4>
+            <div className="text-sm sm:text-base space-y-2">
               {brand?.contact_email && (
                 <p>
-                  📧 <a href={`mailto:${brand.contact_email}`} className="hover:opacity-80 transition-opacity">
+                  📧 <a href={`mailto:${brand.contact_email}`} className="hover:opacity-70 transition-opacity" style={{ color: footerTextColor }}>
                     {brand.contact_email}
                   </a>
                 </p>
               )}
               {brand?.contact_phone && (
                 <p>
-                  📞 <a href={`tel:${brand.contact_phone}`} className="hover:opacity-80 transition-opacity">
+                  📞 <a href={`tel:${brand.contact_phone}`} className="hover:opacity-70 transition-opacity" style={{ color: footerTextColor }}>
                     {brand.contact_phone}
                   </a>
                 </p>
@@ -71,20 +74,20 @@ const Footer: React.FC = () => {
             transition={{ delay: 0.3 }}
             className="text-center sm:text-left"
           >
-            <h4 className="text-base sm:text-lg font-bold mb-3">Quick Links</h4>
-            <ul className="text-xs sm:text-sm space-y-2">
-              <li><a href="/" className="hover:opacity-80 transition-opacity">Home</a></li>
-              <li><a href="/products" className="hover:opacity-80 transition-opacity">Products</a></li>
-              <li><a href="/about" className="hover:opacity-80 transition-opacity">About Us</a></li>
-              <li><a href="/contact" className="hover:opacity-80 transition-opacity">Contact</a></li>
+            <h4 className="text-base sm:text-lg font-bold mb-3" style={{ color: footerTextColor }}>Quick Links</h4>
+            <ul className="text-sm sm:text-base space-y-2">
+              <li><a href="/" className="hover:opacity-70 transition-opacity" style={{ color: footerTextColor }}>Home</a></li>
+              <li><a href="/products" className="hover:opacity-70 transition-opacity" style={{ color: footerTextColor }}>Products</a></li>
+              <li><a href="/about" className="hover:opacity-70 transition-opacity" style={{ color: footerTextColor }}>About Us</a></li>
+              <li><a href="/contact" className="hover:opacity-70 transition-opacity" style={{ color: footerTextColor }}>Contact</a></li>
             </ul>
           </motion.div>
         </div>
       </div>
 
       {/* Footer Bottom */}
-      <div className="border-t border-white border-opacity-20 px-3 sm:px-4 py-4 sm:py-6 text-center">
-        <p className="text-xs sm:text-sm opacity-90">
+      <div className="border-t px-4 sm:px-6 md:px-8 py-6 sm:py-8 text-center" style={{ borderColor: '#1a4d2e' }}>
+        <p className="text-sm sm:text-base" style={{ color: footerTextColor, opacity: 0.8 }}>
           &copy; {new Date().getFullYear()} {brand?.name || 'Radharaman Crafts'}. All rights reserved.
         </p>
       </div>

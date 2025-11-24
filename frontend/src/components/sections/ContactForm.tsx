@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import type { ContactFormValues } from '../../types';
-import { submitContactForm } from '../../utils/api';
+import type { ContactFormValues, Brand } from '../../types';
+import { submitContactForm, fetchBrand } from '../../utils/api';
 
 const ContactForm: React.FC = () => {
   const [formValues, setFormValues] = useState<ContactFormValues>({
@@ -9,9 +9,20 @@ const ContactForm: React.FC = () => {
     email: '',
     message: '',
   });
+  const [brand, setBrand] = useState<Brand | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    const loadBrand = async () => {
+      const brandData = await fetchBrand();
+      setBrand(brandData);
+    };
+    loadBrand();
+  }, []);
+
+  const accentColor = brand?.primary_color || '#1a4d2e';
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -80,7 +91,17 @@ const ContactForm: React.FC = () => {
             value={formValues.name}
             onChange={handleChange}
             placeholder="Enter your name"
-            className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-base"
+            className="w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors text-base"
+            style={{
+              borderColor: '#ddd',
+              '--tw-ring-color': accentColor,
+            } as React.CSSProperties}
+            onFocus={(e) => {
+              e.target.style.borderColor = accentColor;
+            }}
+            onBlur={(e) => {
+              e.target.style.borderColor = '#ddd';
+            }}
             required
           />
         </motion.div>
@@ -101,7 +122,14 @@ const ContactForm: React.FC = () => {
             value={formValues.email}
             onChange={handleChange}
             placeholder="Enter your email"
-            className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-base"
+            className="w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors text-base"
+            style={{ borderColor: '#ddd' }}
+            onFocus={(e) => {
+              e.target.style.borderColor = accentColor;
+            }}
+            onBlur={(e) => {
+              e.target.style.borderColor = '#ddd';
+            }}
             required
           />
         </motion.div>
@@ -121,7 +149,14 @@ const ContactForm: React.FC = () => {
             value={formValues.message}
             onChange={handleChange}
             placeholder="Tell us more about your inquiry..."
-            className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-base resize-none"
+            className="w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors text-base resize-none"
+            style={{ borderColor: '#ddd' }}
+            onFocus={(e) => {
+              e.target.style.borderColor = accentColor;
+            }}
+            onBlur={(e) => {
+              e.target.style.borderColor = '#ddd';
+            }}
             rows={6}
             required
           />
@@ -136,7 +171,8 @@ const ContactForm: React.FC = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-bold py-3 sm:py-4 rounded-lg transition-colors text-base sm:text-lg"
+            className="w-full text-white font-bold py-3 sm:py-4 rounded-lg transition-colors text-base sm:text-lg hover:opacity-90 disabled:opacity-60"
+            style={{ backgroundColor: accentColor }}
           >
             {isSubmitting ? (
               <span className="flex items-center justify-center">

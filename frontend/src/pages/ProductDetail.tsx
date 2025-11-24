@@ -2,37 +2,48 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ProductCarousel from '../components/sections/ProductCarousel';
-import { fetchProducts } from '../utils/api';
-import type { Product } from '../types';
+import { fetchProducts, fetchBrand } from '../utils/api';
+import type { Product, Brand } from '../types';
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [product, setProduct] = useState<Product | null>(null);
+  const [brand, setBrand] = useState<Brand | null>(null);
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const loadProduct = async () => {
+    const loadData = async () => {
       try {
-        const data = await fetchProducts();
-        setAllProducts(data);
-        const found = data.find((p) => p.id === parseInt(id || '0'));
+        const [productsData, brandData] = await Promise.all([
+          fetchProducts(),
+          fetchBrand(),
+        ]);
+        setAllProducts(productsData);
+        setBrand(brandData);
+        const found = productsData.find((p) => p.id === parseInt(id || '0'));
         if (found) {
           setProduct(found);
         }
       } catch (error) {
-        console.error('Failed to fetch products:', error);
+        console.error('Failed to fetch data:', error);
       } finally {
         setLoading(false);
       }
     };
 
-    loadProduct();
+    loadData();
   }, [id]);
 
   const handleOrderClick = () => {
     navigate('/contact');
+  };
+
+  const accentColor = brand?.primary_color || '#1a4d2e';
+  const accentStyle = {
+    color: accentColor,
+    borderColor: accentColor,
   };
 
   if (loading) {
@@ -69,24 +80,26 @@ const ProductDetail: React.FC = () => {
   return (
     <div className="w-full">
       {/* Breadcrumb Navigation */}
-      <section className="w-full bg-gray-100 px-4 py-3 sm:py-4">
+      <section className="w-full px-4 py-3 sm:py-4" style={{ backgroundColor: '#f5f1e8', borderBottom: '1px solid #ddd' }}>
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center space-x-2 text-sm sm:text-base">
             <button
               onClick={() => navigate('/')}
-              className="text-blue-600 hover:text-blue-800"
+              className="transition-colors duration-200"
+              style={{ color: accentColor }}
             >
               Home
             </button>
-            <span className="text-gray-400">/</span>
+            <span style={{ color: '#999' }}>/</span>
             <button
               onClick={() => navigate('/products')}
-              className="text-blue-600 hover:text-blue-800"
+              className="transition-colors duration-200"
+              style={{ color: accentColor }}
             >
               Products
             </button>
-            <span className="text-gray-400">/</span>
-            <span className="text-gray-600">{product.name}</span>
+            <span style={{ color: '#999' }}>/</span>
+            <span style={{ color: '#666' }}>{product?.name}</span>
           </div>
         </div>
       </section>
@@ -148,9 +161,9 @@ const ProductDetail: React.FC = () => {
               </div>
 
               {/* Price */}
-              <div className="bg-gray-50 p-4 rounded-lg mb-6">
+              <div className="p-4 rounded-lg mb-6" style={{ backgroundColor: '#f5f1e8' }}>
                 <p className="text-gray-600 text-sm mb-2">Price</p>
-                <p className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-600">
+                <p className="text-3xl sm:text-4xl md:text-5xl font-bold" style={{ color: accentColor }}>
                   ${parseFloat(product.price).toFixed(2)}
                 </p>
               </div>
@@ -202,13 +215,19 @@ const ProductDetail: React.FC = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   onClick={handleOrderClick}
-                  className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-colors text-base sm:text-lg"
+                  className="flex-1 text-white font-bold py-3 rounded-lg transition-colors text-base sm:text-lg hover:opacity-90"
+                  style={{ backgroundColor: accentColor }}
                 >
                   📞 Order for Details
                 </button>
                 <button
                   onClick={() => navigate('/products')}
-                  className="flex-1 border-2 border-gray-300 hover:border-gray-400 text-gray-700 font-bold py-3 rounded-lg transition-colors text-base sm:text-lg"
+                  className="flex-1 font-bold py-3 rounded-lg transition-colors text-base sm:text-lg"
+                  style={{ 
+                    borderWidth: '2px',
+                    borderColor: accentColor,
+                    color: accentColor,
+                  }}
                 >
                   ← Back to Products
                 </button>

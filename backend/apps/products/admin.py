@@ -3,8 +3,22 @@ from .models import Brand, Product, Testimonial
 
 @admin.register(Brand)
 class BrandAdmin(admin.ModelAdmin):
-    list_display = ('name', 'slug', 'contact_email', 'contact_phone')
+    list_display = ('name', 'slug', 'primary_color', 'secondary_color', 'contact_email')
     prepopulated_fields = {'slug': ('name',)}
+    fieldsets = (
+        ('Basic Information', {
+            'fields': ('name', 'slug')
+        }),
+        ('Branding', {
+            'fields': ('logo', 'primary_color', 'secondary_color', 'font_family', 'background_image')
+        }),
+        ('Content', {
+            'fields': ('header_text', 'footer_text', 'about_text')
+        }),
+        ('Contact Information', {
+            'fields': ('contact_email', 'contact_phone')
+        }),
+    )
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):

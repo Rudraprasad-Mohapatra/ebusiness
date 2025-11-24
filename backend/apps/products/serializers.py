@@ -4,7 +4,7 @@ from .models import Product, Brand
 class BrandSerializer(serializers.ModelSerializer):
     class Meta:
         model = Brand
-        fields = ['id', 'name', 'slug', 'logo', 'primary_color', 'secondary_color', 'font_family', 'header_text', 'footer_text', 'contact_email', 'contact_phone']
+        fields = ['id', 'name', 'slug', 'logo', 'primary_color', 'secondary_color', 'font_family', 'header_text', 'footer_text', 'about_text', 'background_image', 'contact_email', 'contact_phone']
         
 class ProductSerializer(serializers.ModelSerializer):
     brand = BrandSerializer(read_only=True)

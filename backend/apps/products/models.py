@@ -9,6 +9,8 @@ class Brand(models.Model):
     font_family = models.CharField(max_length=100)
     header_text = models.TextField()
     footer_text = models.TextField()
+    about_text = models.TextField(blank=True, null=True)
+    background_image = models.ImageField(upload_to='brand_backgrounds/', blank=True, null=True)
     contact_email = models.EmailField()
     contact_phone = models.CharField(max_length=15)
 

@@ -7,6 +7,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Load .env file
 load_dotenv(BASE_DIR / ".env")
 
+PUBLIC_HOST = os.getenv("PUBLIC_HOST", "http://127.0.0.1:8000")
+
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "dev-secret-key")
 
 DEBUG = os.getenv("DJANGO_DEBUG", "True") == "True"
@@ -27,8 +29,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'apps.products',
     'apps.contact',
-    'apps.orders',
-    'apps.users',
     'frontend',
     'corsheaders',
 ]
@@ -66,16 +66,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.getenv("DB_NAME"),
+#         'USER': os.getenv("DB_USER"),
+#         'PASSWORD': os.getenv("DB_PASSWORD"),
+#         'HOST': os.getenv("DB_HOST", "localhost"),
+#         'PORT': os.getenv("DB_PORT", "3306"),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv("DB_NAME"),
-        'USER': os.getenv("DB_USER"),
-        'PASSWORD': os.getenv("DB_PASSWORD"),
-        'HOST': os.getenv("DB_HOST", "localhost"),
-        'PORT': os.getenv("DB_PORT", "3306"),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -111,5 +119,5 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Media files (user uploads like product images, brand logos)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = f"{PUBLIC_HOST}/media/"
+MEDIA_ROOT = BASE_DIR / "media"

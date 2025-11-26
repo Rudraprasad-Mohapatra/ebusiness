@@ -1,6 +1,6 @@
 import type { Product, ContactFormValues, Brand } from '../types';
 
-const API_BASE_URL = 'http://localhost:8000/api';
+const API_BASE_URL = 'https://zany-fortnight-q59wgw4qw4v2x7vx-8000.app.github.dev/api';
 
 export const fetchBrand = async (slug: string = 'radharaman-craft'): Promise<Brand | null> => {
   try {

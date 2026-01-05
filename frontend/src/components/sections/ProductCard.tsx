@@ -40,11 +40,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           alt={product.name} 
           className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
         />
-        {product.is_trending && (
+        {/* {product.is_trending && (
           <div className="absolute top-2 right-2 bg-red-500 text-white px-3 py-1 rounded-full text-xs sm:text-sm font-bold">
             Trending
           </div>
-        )}
+        )} */}
       </div>
 
       {/* Content */}

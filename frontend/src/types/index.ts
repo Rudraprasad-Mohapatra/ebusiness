@@ -14,6 +14,11 @@ export interface Brand {
   background_image?: string;
   contact_email: string;
   contact_phone: string;
+  facebook_url?: string;
+  instagram_url?: string;
+  twitter_url?: string;
+  linkedin_url?: string;
+  whatsapp_url?: string;
 }
 
 export interface Product {

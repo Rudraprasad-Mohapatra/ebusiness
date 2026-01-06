@@ -13,6 +13,11 @@ class Brand(models.Model):
     background_image = models.ImageField(upload_to='brand_backgrounds/', blank=True, null=True)
     contact_email = models.EmailField()
     contact_phone = models.CharField(max_length=15)
+    facebook_url = models.URLField(blank=True, null=True)
+    instagram_url = models.URLField(blank=True, null=True)
+    twitter_url = models.URLField(blank=True, null=True)
+    linkedin_url = models.URLField(blank=True, null=True)
+    whatsapp_url = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.name

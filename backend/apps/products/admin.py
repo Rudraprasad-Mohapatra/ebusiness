@@ -19,6 +19,15 @@ class BrandAdmin(ImportExportModelAdmin):
         ('Contact Information', {
             'fields': ('contact_email', 'contact_phone')
         }),
+        ('Social Media', {
+            'fields': (
+                'facebook_url',
+                'instagram_url',
+                'twitter_url',
+                'linkedin_url',
+                'whatsapp_url',
+            )
+        }),
     )
 
 @admin.register(Product)

@@ -66,7 +66,7 @@ const Products: React.FC = () => {
           </div>
         </section>
       ) : (
-        <ProductGrid products={products} title="" />
+        <ProductGrid products={products} title="" brand={brand} />
       )}
     </div>
   );

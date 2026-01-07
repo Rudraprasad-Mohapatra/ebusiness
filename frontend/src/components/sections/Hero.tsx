@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
     loadData();
   }, []);
 
-  const accentColor = brand?.primary_color || '#1a4d2e';
+  // const accentColor = brand?.primary_color || '#1a4d2e';
 
   return (
     <div className="w-full" style={{ backgroundColor: '#f5f1e8' }}>

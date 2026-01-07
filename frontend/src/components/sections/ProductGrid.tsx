@@ -6,7 +6,7 @@ import type { Product, Brand } from '../../types';
 interface ProductGridProps {
   products: Product[];
   title?: string;
-  brand?: Brand;
+  brand?: Brand | null;
 }
 
 const ProductGrid: React.FC<ProductGridProps> = ({ products, title = 'Our Products',brand }) => {

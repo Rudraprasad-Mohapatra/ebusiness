@@ -11,7 +11,7 @@ class BrandAdmin(ImportExportModelAdmin):
             'fields': ('name', 'slug')
         }),
         ('Branding', {
-            'fields': ('logo', 'primary_color', 'secondary_color', 'font_family', 'background_image')
+            'fields': ('logo', 'primary_color', 'secondary_color','accent_color', 'font_family', 'background_image')
         }),
         ('Content', {
             'fields': ('header_text', 'footer_text', 'about_text')

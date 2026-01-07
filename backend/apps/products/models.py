@@ -6,6 +6,11 @@ class Brand(models.Model):
     logo = models.ImageField(upload_to='brand_logos/')
     primary_color = models.CharField(max_length=7)
     secondary_color = models.CharField(max_length=7)
+    accent_color = models.CharField(
+    max_length=7,
+    null=True,
+    blank=True
+)
     font_family = models.CharField(max_length=100)
     header_text = models.TextField()
     footer_text = models.TextField()

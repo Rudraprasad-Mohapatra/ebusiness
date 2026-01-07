@@ -97,24 +97,24 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({ products, autoSwipeIn
           {/* Content - Mobile first responsive */}
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-3 sm:p-4 md:p-6 lg:p-8 bg-black/20 sm:bg-black/25 md:bg-black/30">
             {/* Product Name */}
-            <motion.h2
+            {/* <motion.h2
               initial={{ opacity: 0, y: -15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
               className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-center mb-2 sm:mb-3 md:mb-4 drop-shadow-2xl line-clamp-2"
             >
               {current.name}
-            </motion.h2>
+            </motion.h2> */}
 
             {/* Product Description */}
-            <motion.p
+            {/* <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}
               className="text-xs sm:text-sm md:text-base lg:text-lg text-center mb-3 sm:mb-4 md:mb-6 max-w-xs sm:max-w-sm md:max-w-2xl drop-shadow-2xl line-clamp-2 sm:line-clamp-3"
             >
               {current.short_description || current.description || 'Premium handcrafted product'}
-            </motion.p>
+            </motion.p> */}
 
             {/* Price - COMMENTED OUT */}
             {/* <motion.div

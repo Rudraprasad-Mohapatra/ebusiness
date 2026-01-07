@@ -72,7 +72,8 @@ const Header: React.FC = () => {
               <li key={item.name}>
                 <Link
                   to={item.path}
-                  className="text-white hover:text-gray-100 transition-colors duration-200 font-medium px-2 py-2"
+                  className="transition-colors duration-200 font-medium px-2 py-2"
+                  style={{ color: brand?.accent_color }}
                 >
                   {item.name}
                 </Link>
@@ -106,7 +107,8 @@ const Header: React.FC = () => {
             <div className="self-end mb-4">
               <button
                 onClick={toggleSidebar}
-                className="text-gray-800 focus:outline-none hover:text-gray-600"
+                className="focus:outline-none"
+                style={{ color: brand?.accent_color }}
               >
                 <HiX size={28} />
               </button>
@@ -119,7 +121,8 @@ const Header: React.FC = () => {
                   <Link
                     to={item.path}
                     onClick={toggleSidebar}
-                    className="hover:text-gray-600 font-medium"
+                    className="font-medium"
+                    style={{ color: brand?.accent_color }}
                   >
                     {item.name}
                   </Link>

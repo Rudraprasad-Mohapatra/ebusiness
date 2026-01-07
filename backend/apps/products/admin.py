@@ -14,7 +14,7 @@ class BrandAdmin(ImportExportModelAdmin):
             'fields': ('logo', 'primary_color', 'secondary_color','accent_color', 'font_family', 'background_image')
         }),
         ('Content', {
-            'fields': ('header_text', 'footer_text', 'about_text')
+            'fields': ('header_text', 'footer_text', 'about_text', 'address')
         }),
         ('Contact Information', {
             'fields': ('contact_email', 'contact_phone')

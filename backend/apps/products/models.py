@@ -23,6 +23,11 @@ class Brand(models.Model):
     twitter_url = models.URLField(blank=True, null=True)
     linkedin_url = models.URLField(blank=True, null=True)
     whatsapp_url = models.URLField(blank=True, null=True)
+    address = models.TextField(
+    blank=True,
+    null=True
+)
+
 
     def __str__(self):
         return self.name

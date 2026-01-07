@@ -1,14 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import ProductCard from './ProductCard.tsx';
-import type { Product } from '../../types';
+import type { Product, Brand } from '../../types';
 
 interface ProductGridProps {
   products: Product[];
   title?: string;
+  brand?: Brand;
 }
 
-const ProductGrid: React.FC<ProductGridProps> = ({ products, title = 'Our Products' }) => {
+const ProductGrid: React.FC<ProductGridProps> = ({ products, title = 'Our Products',brand }) => {
   return (
     <section className="w-full bg-gray-50 px-4 py-8 sm:py-12 md:py-16 lg:py-20">
       <div className="max-w-7xl mx-auto">
@@ -16,7 +17,8 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, title = 'Our Produc
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 md:mb-8 text-center"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-center"
+          style={{color: brand?.accent_color}}
         >
           {title}
         </motion.h2>

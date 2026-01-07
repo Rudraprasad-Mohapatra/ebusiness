@@ -38,14 +38,17 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-3 sm:mb-4 md:mb-6">
+            <h1 
+            style={{ color: brand?.accent_color }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 md:mb-6">
               Welcome to {brand?.name || 'Radharaman Crafts'}
             </h1>
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 max-w-3xl mx-auto px-2"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 max-w-3xl mx-auto px-2 italic"
+              style={{ color: brand?.accent_color }}
             >
               {brand?.header_text || 'Discover the finest handcrafted products made with love and passion'}
             </motion.p>
@@ -57,7 +60,7 @@ const Hero: React.FC = () => {
       {trendingProducts.length > 0 && (
         <section className="w-full px-4 py-8 sm:py-12 md:py-16 lg:py-20 bg-white">
           <div className="max-w-6xl mx-auto">
-            <motion.h2
+            {/* <motion.h2
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
@@ -65,7 +68,7 @@ const Hero: React.FC = () => {
               style={{ color: accentColor }}
             >
               Trending Products
-            </motion.h2>
+            </motion.h2> */}
             
             {/* Carousel Container */}
             <motion.div
@@ -75,19 +78,19 @@ const Hero: React.FC = () => {
               className="w-full"
             >
               <div className="w-full h-64 sm:h-72 md:h-96 lg:h-[500px] rounded-lg overflow-hidden shadow-lg">
-                <ProductCarousel products={trendingProducts} autoSwipeInterval={5000} />
+                <ProductCarousel products={trendingProducts} autoSwipeInterval={6000} />
               </div>
             </motion.div>
 
             {/* Optional: Additional context text */}
-            <motion.p
+            {/* <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.6 }}
               className="text-center text-gray-700 text-sm sm:text-base md:text-lg mt-6 sm:mt-8"
             >
               Explore our most popular and trending handcrafted items
-            </motion.p>
+            </motion.p> */}
           </div>
         </section>
       )}

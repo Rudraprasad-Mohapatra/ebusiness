@@ -9,6 +9,7 @@ import {
   FaLinkedinIn,
   FaWhatsapp,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer: React.FC = () => {
   const [brand, setBrand] = useState<Brand | null>(null);
@@ -22,15 +23,15 @@ const Footer: React.FC = () => {
   }, []);
 
   // Use warm cream background with dark text for better contrast
-  const footerBgColor = "#f5f1e8";
-  const footerTextColor = "#1a4d2e";
+  const footerBgColor = brand?.secondary_color;
+  const footerTextColor = brand?.accent_color;
 
   return (
     <footer
       className="transition-colors duration-300 border-t-4"
       style={{
         backgroundColor: footerBgColor,
-        borderColor: "#1a4d2e",
+        borderColor: footerTextColor,
         fontFamily: brand?.font_family || "inherit",
       }}
     >
@@ -44,19 +45,26 @@ const Footer: React.FC = () => {
             transition={{ delay: 0.1 }}
             className="text-center sm:text-left"
           >
-            <h3
-              className="text-lg sm:text-xl font-bold mb-2"
-              style={{ color: footerTextColor }}
-            >
-              {brand?.name || "Radharaman Crafts"}
-            </h3>
-            <p
-              className="text-sm sm:text-base"
-              style={{ color: footerTextColor, opacity: 0.8 }}
-            >
-              {brand?.footer_text ||
-                "Crafting quality products with tradition."}
-            </p>
+            <Link to="/">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="
+        flex items-center
+        justify-center sm:justify-start
+        gap-3 sm:gap-4
+        shrink-0
+      "
+              >
+                {brand?.logo && (
+                  <img
+                    src={brand.logo}
+                    alt={brand.name}
+                    className="h-12 sm:h-14 md:h-16 w-auto object-contain drop-shadow-lg scale-400"
+                  />
+                )}
+              </motion.div>
+            </Link>
           </motion.div>
 
           {/* Contact Info */}
@@ -74,11 +82,22 @@ const Footer: React.FC = () => {
             </h4>
             <div className="text-sm sm:text-base space-y-2">
               {brand?.contact_email && (
-                <p>
-                  📧{" "}
+                <p style={{ color: footerTextColor }}>
+                  🏠︎{" "}
+                  <a
+                    className="hover:opacity-70 transition-opacity  font-bold"
+                    style={{ color: footerTextColor }}
+                  >
+                    {brand.address}
+                  </a>
+                </p>
+              )}
+              {brand?.contact_email && (
+                <p style={{ color: footerTextColor }} className="font-extrabold text-lg">
+                  ✉︎{" "}
                   <a
                     href={`mailto:${brand.contact_email}`}
-                    className="hover:opacity-70 transition-opacity"
+                    className="hover:opacity-70 transition-opacity  font-bold"
                     style={{ color: footerTextColor }}
                   >
                     {brand.contact_email}
@@ -86,8 +105,8 @@ const Footer: React.FC = () => {
                 </p>
               )}
               {brand?.contact_phone && (
-                <p>
-                  📞{" "}
+                <p style={{ color: footerTextColor }} className="font-extrabold text-lg">
+                  ☏{" "}
                   <a
                     href={`tel:${brand.contact_phone}`}
                     className="hover:opacity-70 transition-opacity"
@@ -175,12 +194,12 @@ const Footer: React.FC = () => {
 
       {/* Footer Bottom */}
       <div
-        className="border-t px-4 sm:px-6 md:px-8 py-6 sm:py-8 text-center"
-        style={{ borderColor: "#1a4d2e" }}
+        className="border-t px-4 sm:px-6 md:px-8 py-6 sm:py-8 text-center font-semibold"
+        style={{ borderColor: footerTextColor }}
       >
         <p
           className="text-sm sm:text-base"
-          style={{ color: footerTextColor, opacity: 0.8 }}
+          style={{ color: footerTextColor}}
         >
           &copy; {new Date().getFullYear()} {brand?.name || "Radharaman Crafts"}
           . All rights reserved.

@@ -7,6 +7,7 @@ export interface Brand {
   logo: string;
   primary_color: string;
   secondary_color: string;
+  accent_color: string;
   font_family: string;
   header_text: string;
   footer_text: string;
@@ -19,6 +20,7 @@ export interface Brand {
   twitter_url?: string;
   linkedin_url?: string;
   whatsapp_url?: string;
+  address?: string;
 }
 
 export interface Product {

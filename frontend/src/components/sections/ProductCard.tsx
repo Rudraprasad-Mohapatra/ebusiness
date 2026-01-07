@@ -59,7 +59,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
         <div className="flex items-center justify-end">
           <button
-            className="text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded text-xs sm:text-sm transition-all hover:opacity-90"
+            className="text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded text-xs sm:text-sm transition-all"
             style={{ backgroundColor: accentColor }}
             onClick={(e) => {
               e.stopPropagation();

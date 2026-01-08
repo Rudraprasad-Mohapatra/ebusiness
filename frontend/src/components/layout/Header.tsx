@@ -87,6 +87,7 @@ const Header: React.FC = () => {
           <button
             onClick={toggleSidebar}
             className="text-white focus:outline-none"
+            style={{color: brand?.accent_color}}
           >
             {isSidebarOpen ? <HiX size={28} /> : <HiMenu size={28} />}
           </button>

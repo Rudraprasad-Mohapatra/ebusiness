@@ -59,7 +59,8 @@ const Products: React.FC = () => {
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-              className="inline-block w-12 h-12 border-4 border-gray-300 border-t-green-700 rounded-full"
+              className="inline-block w-12 h-12 border-4 border-gray-300 rounded-full"
+              style={{borderTopColor: brand?.accent_color}}
             ></motion.div>
             <p className="mt-4 text-gray-700 text-base sm:text-lg">Loading products...</p>
           </div>

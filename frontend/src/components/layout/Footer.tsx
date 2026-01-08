@@ -156,7 +156,7 @@ const Footer: React.FC = () => {
               </a>
 
               {/* Twitter */}
-              <a
+              {/* <a
                 href={brand?.twitter_url || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -164,10 +164,10 @@ const Footer: React.FC = () => {
                 style={{ borderColor: footerTextColor, color: footerTextColor }}
               >
                 <FaTwitter size={18} />
-              </a>
+              </a> */}
 
               {/* LinkedIn */}
-              <a
+              {/* <a
                 href={brand?.linkedin_url || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -175,9 +175,9 @@ const Footer: React.FC = () => {
                 style={{ borderColor: footerTextColor, color: footerTextColor }}
               >
                 <FaLinkedinIn size={18} />
-              </a>
+              </a> */}
 
-              {/* LinkedIn */}
+              {/* Whatsapp */}
               <a
                 href={brand?.whatsapp_url || "#"}
                 target="_blank"

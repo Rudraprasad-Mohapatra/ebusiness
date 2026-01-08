@@ -40,8 +40,6 @@ const ProductDetail: React.FC = () => {
     navigate('/contact');
   };
 
-  const accentColor = brand?.primary_color || '#1a4d2e';
-
   if (loading) {
     return (
       <div className="w-full min-h-screen flex items-center justify-center">

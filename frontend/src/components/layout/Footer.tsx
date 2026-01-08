@@ -5,8 +5,8 @@ import { fetchBrand } from "../../utils/api";
 import {
   FaFacebookF,
   FaInstagram,
-  FaTwitter,
-  FaLinkedinIn,
+  // FaTwitter,
+  // FaLinkedinIn,
   FaWhatsapp,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";

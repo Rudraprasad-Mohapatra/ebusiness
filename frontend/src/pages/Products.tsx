@@ -28,9 +28,6 @@ const Products: React.FC = () => {
     loadData();
   }, []);
 
-  const headerStyle = brand ? {
-    backgroundColor: brand.primary_color || '#1a4d2e',
-  } : {};
 
   return (
     <div className="w-full">

@@ -14,25 +14,6 @@ const About: React.FC = () => {
     loadBrand();
   }, []);
 
-  const backgroundStyle = brand?.background_image ? {
-    backgroundImage: `url(${brand.background_image})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundAttachment: 'fixed',
-  } : {};
-
-  const headerStyle = brand ? {
-    backgroundColor: brand.primary_color || '#1a4d2e',
-  } : {};
-
-  const footerBgColor = '#f5f1e8';
-  const footerTextColor = '#1a4d2e';
-
-  const accentStyle = brand ? {
-    color: brand.primary_color || '#1a4d2e',
-    borderColor: brand.primary_color || '#1a4d2e',
-  } : {};
-
   return (
     <div className="w-full">
       {/* Page Header */}

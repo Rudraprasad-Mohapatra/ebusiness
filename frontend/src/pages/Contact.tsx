@@ -16,11 +16,11 @@ const Contact: React.FC = () => {
   }, []);
 
   const headerStyle = brand ? {
-    backgroundColor: brand.primary_color || '#1a4d2e',
+    backgroundColor: brand?.secondary_color || '#1a4d2e',
   } : {};
 
-  const footerBgColor = '#f5f1e8';
-  const footerTextColor = '#1a4d2e';
+  const footerBgColor = brand?.secondary_color;
+  const footerTextColor = brand?.accent_color;
   return (
     <div className="w-full">
       {/* Page Header */}
@@ -32,10 +32,10 @@ const Contact: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4" style={{color: brand?.accent_color}}>
               Get in Touch
             </h1>
-            <p className="text-sm sm:text-base md:text-lg opacity-90 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base md:text-lg opacity-90 max-w-2xl mx-auto" style={{color: brand?.accent_color}}>
               Have questions about our products? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
             </p>
           </motion.div>
@@ -56,7 +56,7 @@ const Contact: React.FC = () => {
       </section>
 
       {/* Footer CTA Section */}
-      <section className="w-full px-4 py-12 sm:py-16 md:py-20 border-t-4" style={{ backgroundColor: footerBgColor, borderColor: '#1a4d2e' }}>
+      <section className="w-full px-4 py-12 sm:py-16 md:py-20 border-t-4" style={{ backgroundColor: footerBgColor, borderColor: brand?.accent_color }}>
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

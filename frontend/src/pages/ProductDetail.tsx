@@ -58,13 +58,16 @@ const ProductDetail: React.FC = () => {
     return (
       <div className="w-full min-h-screen flex items-center justify-center">
         <div className="text-center px-4">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4" style={{color: brand?.accent_color}}
+          >
             Product Not Found
           </h1>
-          <p className="text-gray-600 mb-6">The product you're looking for doesn't exist.</p>
+          <p className="text-gray-600 mb-6" style={{color: brand?.accent_color}}
+          >The product you're looking for doesn't exist.</p>
           <button
             onClick={() => navigate('/products')}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors"
+            className="text-white px-6 py-2 rounded-lg transition-colors"
+            style={{color: brand?.accent_color}}
           >
             Back to Products
           </button>
@@ -76,26 +79,26 @@ const ProductDetail: React.FC = () => {
   return (
     <div className="w-full">
       {/* Breadcrumb Navigation */}
-      <section className="w-full px-4 py-3 sm:py-4" style={{ backgroundColor: '#f5f1e8', borderBottom: '1px solid #ddd' }}>
+      <section className="w-full px-4 py-3 sm:py-4" style={{ backgroundColor: brand?.secondary_color, borderBottom: '1px solid #ddd' }}>
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center space-x-2 text-sm sm:text-base">
             <button
               onClick={() => navigate('/')}
               className="transition-colors duration-200"
-              style={{ color: accentColor }}
+              style={{color: brand?.accent_color}}
             >
               Home
             </button>
-            <span style={{ color: '#999' }}>/</span>
+            <span style={{color: brand?.accent_color}}>/</span>
             <button
               onClick={() => navigate('/products')}
               className="transition-colors duration-200"
-              style={{ color: accentColor }}
+              style={{color: brand?.accent_color}}
             >
               Products
             </button>
-            <span style={{ color: '#999' }}>/</span>
-            <span style={{ color: '#666' }}>{product?.name}</span>
+            <span style={{color: brand?.accent_color}}>/</span>
+            <span style={{color: brand?.accent_color}}>{product?.name}</span>
           </div>
         </div>
       </section>
@@ -128,21 +131,21 @@ const ProductDetail: React.FC = () => {
               className="md:col-span-1"
             >
               {/* Trending Badge */}
-              {product.is_trending && (
+              {/* {product.is_trending && (
                 <div className="inline-block bg-red-500 text-white px-4 py-1 rounded-full text-xs sm:text-sm font-bold mb-4">
                   🔥 Trending
                 </div>
-              )}
+              )} */}
 
               {/* Product Name */}
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-3">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3" style={{color: brand?.accent_color}}>
                 {product.name}
               </h1>
 
               {/* Model Number */}
               {product.model_name && (
-                <p className="text-sm sm:text-base text-gray-600 mb-4">
-                  <span className="font-semibold">Model:</span> {product.model_name}
+                <p className="text-sm sm:text-base mb-4" style={{color: brand?.accent_color}}>
+                  <span className="font-semibold" style={{color: brand?.accent_color}}>Model:</span> {product.model_name}
                 </p>
               )}
 
@@ -166,8 +169,8 @@ const ProductDetail: React.FC = () => {
 
               {/* Description */}
               <div className="mb-6">
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Description</h3>
-                <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+                <h3 className="text-lg sm:text-xl font-bold mb-3" style={{color: brand?.accent_color}}>Description</h3>
+                <p className="text-sm sm:text-base leading-relaxed" style={{color: brand?.accent_color}}>
                   {product.short_description}
                 </p>
               </div>
@@ -175,8 +178,8 @@ const ProductDetail: React.FC = () => {
               {/* Details */}
               {product.details && (
                 <div className="mb-6">
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Details</h3>
-                  <p className="text-gray-700 text-sm sm:text-base leading-relaxed whitespace-pre-line">
+                  <h3 className="text-lg sm:text-xl font-bold mb-3" style={{color: brand?.accent_color}}>Details</h3>
+                  <p className="text-sm sm:text-base leading-relaxed whitespace-pre-line" style={{color: brand?.accent_color}}>
                     {product.details}
                   </p>
                 </div>
@@ -185,10 +188,10 @@ const ProductDetail: React.FC = () => {
               {/* Variants */}
               {product.variants && Object.keys(product.variants).length > 0 && (
                 <div className="mb-6">
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">Available Options</h3>
+                  <h3 className="text-lg sm:text-xl font-bold mb-3" style={{color: brand?.accent_color}}>Available Options</h3>
                   {Object.entries(product.variants).map(([key, values]) => (
                     <div key={key} className="mb-4">
-                      <p className="text-gray-600 text-sm sm:text-base mb-2 capitalize font-semibold">
+                      <p className="text-sm sm:text-base mb-2 capitalize font-semibold" style={{color: brand?.accent_color}}>
                         {key}:
                       </p>
                       <div className="flex flex-wrap gap-2">
@@ -212,18 +215,14 @@ const ProductDetail: React.FC = () => {
                 <button
                   onClick={handleOrderClick}
                   className="flex-1 text-white font-bold py-3 rounded-lg transition-colors text-base sm:text-lg hover:opacity-90"
-                  style={{ backgroundColor: accentColor }}
+                  style={{ backgroundColor: brand?.accent_color, color: brand?.secondary_color }}
                 >
                   📞 Order for Details
                 </button>
                 <button
                   onClick={() => navigate('/products')}
                   className="flex-1 font-bold py-3 rounded-lg transition-colors text-base sm:text-lg"
-                  style={{ 
-                    borderWidth: '2px',
-                    borderColor: accentColor,
-                    color: accentColor,
-                  }}
+                  style={{ backgroundColor: brand?.accent_color, color: brand?.secondary_color }}
                 >
                   ← Back to Products
                 </button>
@@ -239,7 +238,7 @@ const ProductDetail: React.FC = () => {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="mt-12 sm:mt-16 md:mt-20"
             >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6 sm:mb-8">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8" style={{color: brand?.accent_color}}>
                 Related Products
               </h2>
               <div className="h-64 sm:h-72 md:h-96 rounded-lg overflow-hidden shadow-lg">

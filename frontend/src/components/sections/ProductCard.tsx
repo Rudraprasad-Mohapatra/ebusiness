@@ -49,11 +49,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
       {/* Content */}
       <div className="p-3 sm:p-4 md:p-5 flex flex-col grow">
-        <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-2 line-clamp-2">
+        <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 line-clamp-2" style={{color: brand?.accent_color}}>
           {product.name}
         </h3>
         
-        <p className="text-xs sm:text-sm text-gray-600 mb-3 line-clamp-2 grow">
+        <p className="text-xs sm:text-sm mb-3 line-clamp-2 grow" style={{color: brand?.accent_color}}>
           {product.short_description || product.description || 'Premium handcrafted product'}
         </p>
 

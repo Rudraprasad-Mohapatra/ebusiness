@@ -35,7 +35,7 @@ const Products: React.FC = () => {
   return (
     <div className="w-full">
       {/* Page Header */}
-      <section className="w-full px-4 py-8 sm:py-12 md:py-16 text-white" style={headerStyle}>
+      <section className="w-full px-4 py-8 sm:py-12 md:py-16 text-white" style={{backgroundColor: brand?.secondary_color}}>
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -43,11 +43,13 @@ const Products: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4"
+            style={{color: brand?.accent_color}}
+            >
               Our Products
             </h1>
-            <p className="text-sm sm:text-base md:text-lg opacity-90 max-w-2xl mx-auto">
-              Explore our complete collection of handcrafted products designed with care and passion
+            <p className="text-sm sm:text-base md:text-lg opacity-90 max-w-2xl mx-auto" style={{color: brand?.accent_color}}>
+              {brand?.header_text}
             </p>
           </motion.div>
         </div>

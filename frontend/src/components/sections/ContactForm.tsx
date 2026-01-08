@@ -22,7 +22,7 @@ const ContactForm: React.FC = () => {
     loadBrand();
   }, []);
 
-  const accentColor = brand?.primary_color || '#1a4d2e';
+  const accentColor = brand?.accent_color || '#1a4d2e';
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -81,7 +81,7 @@ const ContactForm: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <label htmlFor="name" className="block text-sm sm:text-base font-semibold text-gray-900 mb-2">
+          <label htmlFor="name" className="block text-sm sm:text-base font-semibold mb-2" style={{color: brand?.accent_color}}>
             Full Name *
           </label>
           <input
@@ -93,14 +93,14 @@ const ContactForm: React.FC = () => {
             placeholder="Enter your name"
             className="w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors text-base"
             style={{
-              borderColor: '#ddd',
+              borderColor: brand?.accent_color,
               '--tw-ring-color': accentColor,
             } as React.CSSProperties}
             onFocus={(e) => {
               e.target.style.borderColor = accentColor;
             }}
             onBlur={(e) => {
-              e.target.style.borderColor = '#ddd';
+              e.target.style.borderColor = accentColor;
             }}
             required
           />
@@ -112,7 +112,7 @@ const ContactForm: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <label htmlFor="email" className="block text-sm sm:text-base font-semibold text-gray-900 mb-2">
+          <label htmlFor="email" className="block text-sm sm:text-base font-semibold mb-2" style={{color: brand?.accent_color}}>
             Email Address *
           </label>
           <input
@@ -123,12 +123,12 @@ const ContactForm: React.FC = () => {
             onChange={handleChange}
             placeholder="Enter your email"
             className="w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors text-base"
-            style={{ borderColor: '#ddd' }}
+            style={{ borderColor: accentColor }}
             onFocus={(e) => {
               e.target.style.borderColor = accentColor;
             }}
             onBlur={(e) => {
-              e.target.style.borderColor = '#ddd';
+              e.target.style.borderColor = accentColor;
             }}
             required
           />
@@ -140,7 +140,7 @@ const ContactForm: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          <label htmlFor="message" className="block text-sm sm:text-base font-semibold text-gray-900 mb-2">
+          <label htmlFor="message" className="block text-sm sm:text-base font-semibold mb-2" style={{color: brand?.accent_color}}>
             Message *
           </label>
           <textarea
@@ -150,12 +150,12 @@ const ContactForm: React.FC = () => {
             onChange={handleChange}
             placeholder="Tell us more about your inquiry..."
             className="w-full px-4 py-3 border-2 rounded-lg focus:outline-none transition-colors text-base resize-none"
-            style={{ borderColor: '#ddd' }}
+            style={{ borderColor: accentColor }}
             onFocus={(e) => {
               e.target.style.borderColor = accentColor;
             }}
             onBlur={(e) => {
-              e.target.style.borderColor = '#ddd';
+              e.target.style.borderColor = accentColor;
             }}
             rows={6}
             required
@@ -190,7 +190,7 @@ const ContactForm: React.FC = () => {
         </motion.div>
 
         {/* Form Info */}
-        <p className="text-xs sm:text-sm text-gray-600 text-center">
+        <p className="text-xs sm:text-sm text-center" style={{color: brand?.accent_color}}>
           We typically respond within 24-48 hours during business days.
         </p>
       </form>

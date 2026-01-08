@@ -37,8 +37,8 @@ const About: React.FC = () => {
     <div className="w-full">
       {/* Page Header */}
       <section 
-        className="w-full px-4 py-8 sm:py-12 md:py-16 text-white"
-        style={headerStyle}
+        className="w-full px-4 py-8 sm:py-12 md:py-16"
+        style={{backgroundColor: brand?.secondary_color}}
       >
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -47,10 +47,14 @@ const About: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">
-              About {brand?.name || 'Radharaman Crafts'}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4"
+            style={{color: brand?.accent_color}}
+            >
+              About {brand?.name || 'Radharaman Craft'}
             </h1>
-            <p className="text-sm sm:text-base md:text-lg opacity-90 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base md:text-lg opacity-90 max-w-2xl mx-auto"
+            style={{color: brand?.accent_color}}
+            >
               {brand?.header_text || 'Discover our story and mission'}
             </p>
           </motion.div>
@@ -58,7 +62,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Hero Section with Background */}
-      {brand?.background_image && (
+      {/* {brand?.background_image && (
         <section 
           className="w-full h-64 sm:h-80 md:h-96 lg:h-[500px] relative overflow-hidden"
           style={backgroundStyle}
@@ -79,10 +83,10 @@ const About: React.FC = () => {
             </motion.div>
           </div>
         </section>
-      )}
+      )} */}
 
       {/* Content Section */}
-      <section className="w-full px-4 py-8 sm:py-12 md:py-16 lg:py-20 bg-gray-50">
+      <section className="w-full px-4 py-8 sm:py-12 md:py-16 lg:py-20 bg-gray-50" style={{color: brand?.accent_color}}>
         <div className="max-w-4xl mx-auto">
           {/* Brand Story */}
           <motion.div
@@ -93,11 +97,11 @@ const About: React.FC = () => {
           >
             <h2 
               className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6"
-              style={accentStyle}
+              style={{color: brand?.accent_color}}
             >
               Our Story
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed mb-4">
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-4" style={{color: brand?.accent_color}}>
               {brand?.about_text || `Welcome to ${brand?.name || 'Radharaman Crafts'}. We are dedicated to creating exceptional handcrafted products using traditional techniques and sustainable materials. Each product is carefully crafted with attention to detail and a commitment to quality.`}
             </p>
           </motion.div>
@@ -113,17 +117,17 @@ const About: React.FC = () => {
             >
               <div 
                 className="text-4xl mb-4"
-                style={{ color: brand?.primary_color || '#3b82f6' }}
+                style={{ color: brand?.accent_color || '#3b82f6' }}
               >
                 🎯
               </div>
               <h3 
                 className="text-lg sm:text-xl font-bold mb-3"
-                style={accentStyle}
+                style={{color: brand?.accent_color}}
               >
                 Our Mission
               </h3>
-              <p className="text-sm sm:text-base text-gray-600">
+              <p className="text-sm sm:text-base" style={{color: brand?.accent_color}}>
                 To create sustainable, high-quality products that blend traditional craftsmanship with modern design.
               </p>
             </motion.div>
@@ -137,17 +141,17 @@ const About: React.FC = () => {
             >
               <div 
                 className="text-4xl mb-4"
-                style={{ color: brand?.primary_color || '#3b82f6' }}
+                style={{ color: brand?.accent_color || '#3b82f6' }}
               >
                 ✨
               </div>
               <h3 
                 className="text-lg sm:text-xl font-bold mb-3"
-                style={accentStyle}
+                style={{color: brand?.accent_color}}
               >
                 Our Values
               </h3>
-              <p className="text-sm sm:text-base text-gray-600">
+              <p className="text-sm sm:text-base" style={{color: brand?.accent_color}}>
                 Quality, sustainability, and customer satisfaction are at the heart of everything we do.
               </p>
             </motion.div>
@@ -161,17 +165,17 @@ const About: React.FC = () => {
             >
               <div 
                 className="text-4xl mb-4"
-                style={{ color: brand?.primary_color || '#3b82f6' }}
+                style={{ color: brand?.accent_color || '#3b82f6' }}
               >
                 💚
               </div>
               <h3 
                 className="text-lg sm:text-xl font-bold mb-3"
-                style={accentStyle}
+                style={{color: brand?.accent_color}}
               >
                 Our Commitment
               </h3>
-              <p className="text-sm sm:text-base text-gray-600">
+              <p className="text-sm sm:text-base" style={{color: brand?.accent_color}}>
                 We are committed to eco-friendly practices and creating products that benefit both our customers and the planet.
               </p>
             </motion.div>
@@ -186,7 +190,7 @@ const About: React.FC = () => {
           >
             <h2 
               className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8"
-              style={accentStyle}
+              style={{color: brand?.accent_color}}
             >
               Why Choose Us?
             </h2>
@@ -207,7 +211,7 @@ const About: React.FC = () => {
                   className="flex items-center gap-3 p-3 sm:p-4 bg-white rounded-lg shadow-sm"
                 >
                   <div className="text-xl shrink-0">{item.split(' ')[0]}</div>
-                  <p className="text-sm sm:text-base text-gray-700">{item.substring(2)}</p>
+                  <p className="text-sm sm:text-base" style={{color: brand?.accent_color}}>{item.substring(2)}</p>
                 </motion.div>
               ))}
             </div>
@@ -220,7 +224,7 @@ const About: React.FC = () => {
             transition={{ delay: 0.5, duration: 0.6 }}
             className="mt-12 sm:mt-16 text-center"
           >
-            <p className="text-sm sm:text-base md:text-lg text-gray-700 mb-4 sm:mb-6">
+            <p className="text-sm sm:text-base md:text-lg mb-4 sm:mb-6" style={{color: brand?.accent_color}}>
               Have questions? We'd love to hear from you!
             </p>
             <a
@@ -230,50 +234,6 @@ const About: React.FC = () => {
             >
               Get in Touch
             </a>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Brand Info Section */}
-      <section 
-        className="w-full px-4 py-12 sm:py-16 md:py-20 border-t-4"
-        style={{ backgroundColor: footerBgColor, borderColor: '#1a4d2e' }}
-      >
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8"
-          >
-            {/* About Brand */}
-            <div>
-              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4" style={{ color: footerTextColor }}>About {brand?.name}</h3>
-              <p className="text-sm sm:text-base leading-relaxed" style={{ color: footerTextColor, opacity: 0.85 }}>
-                {brand?.footer_text || 'Crafting quality products with tradition. We believe in creating products that last, that matter, and that make a difference in people\'s lives.'}
-              </p>
-            </div>
-
-            {/* Contact Info */}
-            <div>
-              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4" style={{ color: footerTextColor }}>Get in Touch</h3>
-              <div className="text-sm sm:text-base space-y-2">
-                {brand?.contact_email && (
-                  <p>
-                    📧 <a href={`mailto:${brand.contact_email}`} className="hover:opacity-70 transition-opacity" style={{ color: footerTextColor }}>
-                      {brand.contact_email}
-                    </a>
-                  </p>
-                )}
-                {brand?.contact_phone && (
-                  <p>
-                    📞 <a href={`tel:${brand.contact_phone}`} className="hover:opacity-70 transition-opacity" style={{ color: footerTextColor }}>
-                      {brand.contact_phone}
-                    </a>
-                  </p>
-                )}
-              </div>
-            </div>
           </motion.div>
         </div>
       </section>

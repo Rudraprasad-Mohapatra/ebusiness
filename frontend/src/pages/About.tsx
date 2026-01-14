@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import type { Brand } from '../types';
-import { fetchBrand } from '../utils/api';
+import type { Brand, Testimonial } from '../types';
+import { fetchBrand, fetchTestimonials } from '../utils/api';
+import TestimonialSlider from '../components/sections/TestimonialSlider';
 
 const About: React.FC = () => {
   const [brand, setBrand] = useState<Brand | null>(null);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
 
   useEffect(() => {
     const loadBrand = async () => {
@@ -12,6 +14,19 @@ const About: React.FC = () => {
       setBrand(brandData);
     };
     loadBrand();
+  }, []);
+
+  useEffect(() => {
+    const loadTestimonials = async () => {
+      try {
+        const data = await fetchTestimonials();
+        setTestimonials(data);
+      } catch (error) {
+        console.error('Failed to fetch testimonials:', error);
+      }
+    };
+
+    loadTestimonials();
   }, []);
 
   return (
@@ -218,6 +233,9 @@ const About: React.FC = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      {testimonials.length > 0 && <TestimonialSlider testimonials={testimonials} brand={brand} title="Customer Testimonials" />}
     </div>
   );
 };

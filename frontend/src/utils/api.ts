@@ -1,4 +1,4 @@
-import type { Product, ContactFormValues, Brand, ProductType } from '../types';
+import type { Product, ContactFormValues, Brand, ProductType, Testimonial } from '../types';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8001/api';
 
@@ -57,6 +57,20 @@ export const fetchProductTypes = async (): Promise<ProductType[]> => {
     return Array.isArray(data) ? data : [data];
   } catch (error) {
     console.error('Error fetching product types:', error);
+    return [];
+  }
+};
+
+export const fetchTestimonials = async (): Promise<Testimonial[]> => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/contact/testimonials/`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch testimonials`);
+    }
+    const data = await response.json();
+    return Array.isArray(data) ? data : [data];
+  } catch (error) {
+    console.error('Error fetching testimonials:', error);
     return [];
   }
 };

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import ContactForm from '../components/sections/ContactForm';
-import { fetchBrand } from '../utils/api';
-import type { Brand } from '../types';
+import { fetchBrand, fetchTestimonials } from '../utils/api';
+import TestimonialSlider from '../components/sections/TestimonialSlider';
+import type { Brand, Testimonial } from '../types';
 
 const Contact: React.FC = () => {
   const [brand, setBrand] = useState<Brand | null>(null);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
 
   useEffect(() => {
     const loadBrand = async () => {
@@ -13,6 +15,19 @@ const Contact: React.FC = () => {
       setBrand(brandData);
     };
     loadBrand();
+  }, []);
+
+  useEffect(() => {
+    const loadTestimonials = async () => {
+      try {
+        const data = await fetchTestimonials();
+        setTestimonials(data);
+      } catch (error) {
+        console.error('Failed to fetch testimonials:', error);
+      }
+    };
+
+    loadTestimonials();
   }, []);
 
   const headerStyle = brand ? {
@@ -52,6 +67,9 @@ const Contact: React.FC = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      {testimonials.length > 0 && <TestimonialSlider testimonials={testimonials} brand={brand} title="What Our Customers Say" />}
 
       {/* Footer CTA Section */}
       {/* <section className="w-full px-4 py-12 sm:py-16 md:py-20 border-t-4" style={{ backgroundColor: footerBgColor, borderColor: brand?.accent_color }}>

@@ -44,14 +44,25 @@ class ProductTypeSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'created_at']
 
 class TestimonialSerializer(serializers.ModelSerializer):
+    name = serializers.CharField(source='client_name', read_only=True)
+    message = serializers.CharField(source='text', read_only=True)
+    avatar = serializers.SerializerMethodField()
+
+    def get_avatar(self, obj):
+        if obj.client_image:
+            request = self.context.get('request')
+            if request and hasattr(obj.client_image, 'url'):
+                return request.build_absolute_uri(obj.client_image.url)
+            return str(obj.client_image)
+        return None
 
     class Meta:
         model = Testimonial
         fields = [
             'id',
-            'client_name',
-            'text',
-            'client_image',
+            'name',
+            'message',
+            'avatar',
             'created_at',
         ]
         read_only_fields = ['id', 'created_at']

@@ -2,13 +2,15 @@ import React from "react";
 import Hero from "../components/sections/Hero.tsx";
 import ProductGrid from "../components/sections/ProductGrid.tsx";
 import { useEffect, useState } from "react";
-import { fetchBrand, fetchProducts } from "../utils/api.ts";
-import type { Product, Brand } from "../types";
+import { fetchBrand, fetchProducts, fetchTestimonials } from "../utils/api.ts";
+import type { Product, Brand, Testimonial } from "../types";
 import ProductType from "../components/sections/ProductType.tsx";
+import TestimonialSlider from "../components/sections/TestimonialSlider.tsx";
 
 const Home: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [brand, setBrand] = useState<Brand | null>(null);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -31,11 +33,26 @@ const Home: React.FC = () => {
     loadBrand();
   }, []);
 
+  useEffect(() => {
+    const loadTestimonials = async () => {
+      try {
+        const data = await fetchTestimonials();
+        console.log('Testimonials loaded:', data);
+        setTestimonials(data);
+      } catch (error) {
+        console.error("Failed to fetch testimonials:", error);
+      }
+    };
+
+    loadTestimonials();
+  }, []);
+
   return (
     <div>
       <Hero />
       <ProductType />
       <ProductGrid products={products} brand={brand} />
+      {testimonials.length > 0 && <TestimonialSlider testimonials={testimonials} brand={brand} />}
     </div>
   );
 };

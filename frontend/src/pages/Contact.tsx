@@ -19,8 +19,6 @@ const Contact: React.FC = () => {
     backgroundColor: brand?.secondary_color || '#1a4d2e',
   } : {};
 
-  const footerBgColor = brand?.secondary_color;
-  const footerTextColor = brand?.accent_color;
   return (
     <div className="w-full">
       {/* Page Header */}

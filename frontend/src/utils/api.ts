@@ -1,4 +1,4 @@
-import type { Product, ContactFormValues, Brand } from '../types';
+import type { Product, ContactFormValues, Brand, ProductType } from '../types';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8001/api';
 

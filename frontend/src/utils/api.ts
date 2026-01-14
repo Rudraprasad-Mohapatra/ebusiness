@@ -16,9 +16,12 @@ export const fetchBrand = async (slug: string = 'radharaman-craft'): Promise<Bra
   }
 };
 
-export const fetchProducts = async (): Promise<Product[]> => {
+export const fetchProducts = async (typeId?: number): Promise<Product[]> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/products/`);
+    const url = typeId 
+      ? `${API_BASE_URL}/products/?type=${typeId}`
+      : `${API_BASE_URL}/products/`;
+    const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`Failed to fetch products: ${response.statusText}`);
     }

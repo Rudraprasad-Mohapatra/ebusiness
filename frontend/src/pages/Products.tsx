@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useSearchParams } from 'react-router-dom';
 import ProductGrid from '../components/sections/ProductGrid';
 import { fetchProducts, fetchBrand } from '../utils/api';
 import type { Product, Brand } from '../types';
@@ -8,12 +9,15 @@ const Products: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [brand, setBrand] = useState<Brand | null>(null);
   const [loading, setLoading] = useState(true);
+  const [searchParams] = useSearchParams();
+  const typeId = searchParams.get('type');
 
   useEffect(() => {
     const loadData = async () => {
       try {
+        const typeIdNum = typeId ? parseInt(typeId, 10) : undefined;
         const [productsData, brandData] = await Promise.all([
-          fetchProducts(),
+          fetchProducts(typeIdNum),
           fetchBrand(),
         ]);
         setProducts(productsData);
@@ -26,7 +30,7 @@ const Products: React.FC = () => {
     };
 
     loadData();
-  }, []);
+  }, [typeId]);
 
 
   return (

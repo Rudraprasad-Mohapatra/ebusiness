@@ -44,6 +44,20 @@ export const fetchTrendingProducts = async (): Promise<Product[]> => {
   }
 };
 
+export const fetchProductTypes = async (): Promise<ProductType[]> => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/products/product-types/`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch product types`);
+    }
+    const data = await response.json();
+    return Array.isArray(data) ? data : [data];
+  } catch (error) {
+    console.error('Error fetching product types:', error);
+    return [];
+  }
+};
+
 export const submitContactForm = async (data: ContactFormValues): Promise<void> => {
   const response = await fetch(`${API_BASE_URL}/contact/`, {
     method: 'POST',

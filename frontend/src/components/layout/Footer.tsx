@@ -93,7 +93,7 @@ const Footer: React.FC = () => {
                 </p>
               )}
               {brand?.contact_email && (
-                <p style={{ color: footerTextColor }} className="font-extrabold text-lg">
+                <div style={{ color: footerTextColor }} className="font-extrabold text-lg">
                   ✉︎{" "}
                   <a
                     href={`mailto:${brand.contact_email}`}
@@ -102,10 +102,10 @@ const Footer: React.FC = () => {
                   >
                     {brand.contact_email}
                   </a>
-                </p>
+                </div>
               )}
               {brand?.contact_phone && (
-                <p style={{ color: footerTextColor }} className="font-extrabold text-lg">
+                <div style={{ color: footerTextColor }} className="font-extrabold text-lg">
                   ☏{" "}
                   <a
                     href={`tel:${brand.contact_phone}`}
@@ -114,7 +114,7 @@ const Footer: React.FC = () => {
                   >
                     {brand.contact_phone}
                   </a>
-                </p>
+                </div>
               )}
             </div>
           </motion.div>

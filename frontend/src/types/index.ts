@@ -39,6 +39,16 @@ export interface Product {
   updated_at?: string;
 }
 
+export interface ProductType {
+  id: number;
+  name: string;
+  image: string;
+  description: string;
+  created_at: string;
+  updated_at: string;
+}
+
+
 export interface Testimonial {
   id: number;
   name: string;

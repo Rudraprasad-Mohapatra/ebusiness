@@ -31,10 +31,11 @@ class ProductSerializer(serializers.ModelSerializer):
 class ProductTypeSerializer(serializers.ModelSerializer):
     
     class Meta:
-        Model = ProductType
+        model = ProductType
         fields = [
             'id',
             'name',
+            'image',
             'description',
             'created_at',
             'updated_at'

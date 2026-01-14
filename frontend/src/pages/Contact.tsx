@@ -56,7 +56,7 @@ const Contact: React.FC = () => {
       </section>
 
       {/* Footer CTA Section */}
-      <section className="w-full px-4 py-12 sm:py-16 md:py-20 border-t-4" style={{ backgroundColor: footerBgColor, borderColor: brand?.accent_color }}>
+      {/* <section className="w-full px-4 py-12 sm:py-16 md:py-20 border-t-4" style={{ backgroundColor: footerBgColor, borderColor: brand?.accent_color }}>
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -79,7 +79,7 @@ const Contact: React.FC = () => {
             </p>
           </motion.div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

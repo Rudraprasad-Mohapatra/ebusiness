@@ -4,6 +4,7 @@ import ProductGrid from "../components/sections/ProductGrid.tsx";
 import { useEffect, useState } from "react";
 import { fetchBrand, fetchProducts } from "../utils/api.ts";
 import type { Product, Brand } from "../types";
+import ProductType from "../components/sections/ProductType.tsx";
 
 const Home: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -33,6 +34,7 @@ const Home: React.FC = () => {
   return (
     <div>
       <Hero />
+      <ProductType />
       <ProductGrid products={products} brand={brand} />
     </div>
   );

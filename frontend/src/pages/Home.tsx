@@ -51,7 +51,7 @@ const Home: React.FC = () => {
     <div>
       <Hero />
       <ProductType />
-      <ProductGrid products={products} brand={brand} />
+      {/* <ProductGrid products={products} brand={brand} /> */}
       {testimonials.length > 0 && <TestimonialSlider testimonials={testimonials} brand={brand} />}
     </div>
   );

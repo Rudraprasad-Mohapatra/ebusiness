@@ -114,7 +114,8 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
-                    className="relative w-auto h-auto"
+                    className="relative p-8"
+                    // style={{ width: '80px', height: '80px' }}
                   >
                     {currentTestimonial.avatar && !imageErrors.has(currentIndex) ? (
                       <img

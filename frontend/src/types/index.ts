@@ -8,6 +8,7 @@ export interface Brand {
   primary_color: string;
   secondary_color: string;
   accent_color: string;
+  accent_background_color: string;
   font_family: string;
   header_text: string;
   footer_text: string;

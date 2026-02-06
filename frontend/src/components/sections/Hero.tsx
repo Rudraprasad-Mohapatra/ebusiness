@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
   // const accentColor = brand?.primary_color || '#1a4d2e';
 
   return (
-    <div className="w-full" style={{ backgroundColor: '#f5f1e8' }}>
+    <div className="w-full" style={{ backgroundColor: brand?.accent_background_color }}>
       {/* Welcome Section */}
       <section className="w-full px-4 py-8 sm:py-12 md:py-16 lg:py-20">
         <div className="max-w-6xl mx-auto">

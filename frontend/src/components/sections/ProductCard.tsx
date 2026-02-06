@@ -20,7 +20,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     loadBrand();
   }, []);
 
-  const accentColor = brand?.primary_color || '#1a4d2e';
+  const accentColor = brand?.accent_color || '#1a4d2e';
 
   const handleClick = () => {
     navigate(`/products/${product.id}`);

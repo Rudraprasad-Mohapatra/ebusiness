@@ -71,7 +71,7 @@ const Header: React.FC = () => {
               <img
                 src={brand.logo}
                 alt={brand.name}
-                className="h-12 sm:h-14 md:h-16 w-auto object-contain drop-shadow-lg scale-280"
+                className="h-16 sm:h-20 md:h-24 w-auto object-contain drop-shadow-lg scale-280"
               />
             )}
             {/* <Link

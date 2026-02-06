@@ -80,7 +80,7 @@ const Footer: React.FC = () => {
             >
               Contact
             </h4>
-            <div className="text-sm sm:text-base space-y-2">
+            <div className="text-base sm:text-lg md:text-xl space-y-3">
               {brand?.contact_email && (
                 <p style={{ color: footerTextColor }}>
                   🏠︎{" "}
@@ -93,7 +93,7 @@ const Footer: React.FC = () => {
                 </p>
               )}
               {brand?.contact_email && (
-                <div style={{ color: footerTextColor }} className="font-extrabold text-lg">
+                <div style={{ color: footerTextColor }} className="font-extrabold text-lg sm:text-xl">
                   ✉︎{" "}
                   <a
                     href={`mailto:${brand.contact_email}`}
@@ -105,7 +105,7 @@ const Footer: React.FC = () => {
                 </div>
               )}
               {brand?.contact_phone && (
-                <div style={{ color: footerTextColor }} className="font-extrabold text-lg">
+                <div style={{ color: footerTextColor }} className="font-extrabold text-lg sm:text-xl">
                   ☏{" "}
                   <a
                     href={`tel:${brand.contact_phone}`}
@@ -132,16 +132,16 @@ const Footer: React.FC = () => {
               Follow Us
             </h4>
 
-            <div className="flex justify-center sm:justify-start gap-4">
+            <div className="flex justify-center sm:justify-start gap-6">
               {/* Facebook */}
               <a
                 href={brand?.facebook_url || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-full border hover:scale-110 transition-transform"
+                className="w-14 h-14 flex items-center justify-center rounded-full border-2 hover:scale-110 transition-transform"
                 style={{ borderColor: footerTextColor, color: footerTextColor }}
               >
-                <FaFacebookF size={18} />
+                <FaFacebookF size={28} />
               </a>
 
               {/* Instagram */}
@@ -149,10 +149,10 @@ const Footer: React.FC = () => {
                 href={brand?.instagram_url || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-full border hover:scale-110 transition-transform"
+                className="w-14 h-14 flex items-center justify-center rounded-full border-2 hover:scale-110 transition-transform"
                 style={{ borderColor: footerTextColor, color: footerTextColor }}
               >
-                <FaInstagram size={18} />
+                <FaInstagram size={28} />
               </a>
 
               {/* Twitter */}
@@ -160,10 +160,10 @@ const Footer: React.FC = () => {
                 href={brand?.twitter_url || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-full border hover:scale-110 transition-transform"
+                className="w-14 h-14 flex items-center justify-center rounded-full border-2 hover:scale-110 transition-transform"
                 style={{ borderColor: footerTextColor, color: footerTextColor }}
               >
-                <FaTwitter size={18} />
+                <FaTwitter size={28} />
               </a> */}
 
               {/* LinkedIn */}
@@ -171,10 +171,10 @@ const Footer: React.FC = () => {
                 href={brand?.linkedin_url || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-full border hover:scale-110 transition-transform"
+                className="w-14 h-14 flex items-center justify-center rounded-full border-2 hover:scale-110 transition-transform"
                 style={{ borderColor: footerTextColor, color: footerTextColor }}
               >
-                <FaLinkedinIn size={18} />
+                <FaLinkedinIn size={28} />
               </a> */}
 
               {/* Whatsapp */}
@@ -182,10 +182,10 @@ const Footer: React.FC = () => {
                 href={brand?.whatsapp_url || "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center rounded-full border hover:scale-110 transition-transform"
+                className="w-14 h-14 flex items-center justify-center rounded-full border-2 hover:scale-110 transition-transform"
                 style={{ borderColor: footerTextColor, color: footerTextColor }}
               >
-                <FaWhatsapp size={18} />
+                <FaWhatsapp size={28} />
               </a>
             </div>
           </motion.div>
